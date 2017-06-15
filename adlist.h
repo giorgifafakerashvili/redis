@@ -46,8 +46,65 @@ typedef struct list {
 /**
  * Prototypes
  */
-list* listCreate(void);
+
+/**
+ * Create a linked list
+ */
+list* listCreate(void);\
+
+/**
+ * Remove the linked list
+ */
 void listRelease(list* list);
 
+/**
+ * Make the linked list
+ * empty
+ */
+void listEmpty(list* list);
+
+/**
+ * Add head node
+ * to linked list
+ */
+list* listAddNodeHead(list* list, void* value);
+
+/**
+ * Add tail node
+ * to linked list
+ */
+list* listAddNodeTail(list* list, void* value);
+
+/**
+ * Add node node
+ * insted of old_node
+ */
+list* listInsertNode(list* list, listNode* old_node, void* value, int after);
+
+/**
+ * Delete node from
+ * linked list
+ */
+void listDelNode(list* list, listNode* node);
+
+listIter* listGetIterator(list* list, int direction);
+listNode* listNext(listIter* iter);
+
+void listReleaseIterator(listIter* iter);
+list* listDup(list* origin);
+
+listNode* listSearchKey(list* list, void* key);
+listNode* listIndex(list* list, long index);
+
+void listRewind(list* list, listIter* li);
+void listRewindTail(list* list, listIter* li);
+void listRotate(list* list);
+void listJoin(list* l, list* o);
+
+/**
+ * Directionsfor iterators
+ */
+#define AL_START_HEAD 0
+#define AL_START_TAIL 1 
 
 #endif // _ADLIST_H_
